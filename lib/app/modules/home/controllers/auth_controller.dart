@@ -7,6 +7,15 @@ import '../views/home_view.dart';
 class AuthController extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance; // Firebase Auth instance
   RxBool isLoading = false.obs; // Loading indicator
+   Rx<User?> firebaseUser = Rx<User?>(null);
+
+  @override
+  void onInit() {
+    super.onInit();
+    firebaseUser.bindStream(_auth.authStateChanges());
+  }
+
+  String? get userId => firebaseUser.value?.uid;
 
   // Fungsi untuk registrasi pengguna baru
   Future<void> registerUser(String email, String password) async {

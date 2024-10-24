@@ -1,5 +1,8 @@
+import 'package:codelab/app/modules/home/bindings/home_binding.dart';
+import 'package:codelab/app/modules/home/views/create_task_screen.dart';
 import 'package:codelab/app/modules/home/views/login_page.dart';
 import 'package:codelab/app/modules/home/views/register_page.dart';
+import 'package:codelab/app/modules/home/views/task_view.dart';
 import 'package:get/get.dart';
 import '../modules/home/views/home_view.dart';
 
@@ -20,6 +23,12 @@ class AppPages {
     GetPage(
       name: _Paths.HOME,
       page: () => HomeView(),
+      binding: InitialBinding(),
     ),
+    GetPage(
+      name: _Paths.CREATE_TASK,
+      page: () => CreateTaskScreen(isEdit: false), // Page for creating task
+    ),
+
   ];
 }
